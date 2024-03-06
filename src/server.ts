@@ -1,7 +1,7 @@
 import express from "express";
 import prisma from "./utils/prisma";
 import cron from "node-cron";
-
+import { create, Whatsapp } from "venom-bot";
 const app = express();
 app.use(express.json());
 
@@ -10,6 +10,22 @@ const port = process.env.PORT ?? 4000;
 cron.schedule("* * * * *", () => {
   console.log("testei");
 });
+
+async function connectToWhatsApp() {
+  const client: Whatsapp = await create({
+    session: "GPZAP",
+    disableWelcome: true,
+  });
+
+  // Evento para quando uma mensagem é recebida
+  client.onMessage(async (message) => {
+    console.log("Mensagem recebida:", message.body);
+    await client.sendText(message.from, "Oi! Como posso ajudar?");
+  });
+}
+
+// Inicie a conexão
+connectToWhatsApp();
 
 app.get("/sensores", async (request, response) => {
   const sensores = await prisma.sensor.findMany();
