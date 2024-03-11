@@ -12,3 +12,17 @@ model Sensor {
   nome  String
   valor String
 }
+
+model Usuario {
+  id      Int      @id @default(autoincrement())
+  nome    String
+  culturas Cultura[]
+}
+
+model Cultura {
+  id   Int     @id @default(autoincrement())
+  nome String
+  kc   Float
+  usuario_id Int
+  usuario    Usuario @relation(fields: [usuario_id], references: [id])
+}
