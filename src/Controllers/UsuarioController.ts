@@ -4,10 +4,10 @@ import prisma from "../utils/prisma";
 export class UsuarioController {
   async criarUsuario(req: Request, res: Response) {
     try {
-      const { nome } = req.body;
+      const { nome, tel } = req.body;
 
       const novoUsuario = await prisma.usuario.create({
-        data: { nome },
+        data: { nome , tel},
       });
 
       return res.status(201).json(novoUsuario);

@@ -16,6 +16,7 @@ model Sensor {
 model Usuario {
   id      Int      @id @default(autoincrement())
   nome    String
+  tel     String
   culturas Cultura[]
 }
 
