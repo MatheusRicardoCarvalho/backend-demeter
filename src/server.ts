@@ -10,8 +10,8 @@ app.use(router)
 
 const port = process.env.PORT ?? 4000;
 
-cron.schedule("1 17 * * *", () => {
-  console.log("testei");
+cron.schedule("0 5 * * *", () => {
+  
 });
 
 

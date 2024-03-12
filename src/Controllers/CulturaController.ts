@@ -22,6 +22,29 @@ export class CulturaController {
     }
   }
 
+  async listarCulturas(req: Request, res: Response) {
+    try {
+      const culturas = await prisma.cultura.findMany({
+        include: {
+          usuario: true
+        }
+      });
+  
+      const culturasFormatadas = culturas.map(cultura => ({
+        mm_dia: cultura.mm_dia,
+        tel: cultura.usuario?.tel,
+        nome_cultura: cultura.nome,
+        nome_usuario: cultura.usuario?.nome
+      }));
+  
+      return res.status(200).json(culturasFormatadas);
+    } catch (error) {
+      console.error("Erro ao listar culturas:", error);
+      return res.status(500).json({ error: "Erro interno do servidor: \n"+error });
+    }
+  }
+  
+
   async lerCulturaPorId(req: Request, res: Response) {
     try {
       const {culturaId} = req.body;

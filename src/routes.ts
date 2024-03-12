@@ -15,6 +15,8 @@ router.post('/cultura/index_unique', culturaController.lerCulturaPorId);
 
 router.post('/culturas', culturaController.criarCultura);
 
+router.get('/culturas', culturaController.listarCulturas)
+
 // Rotas para Usuário
 router.get('/usuarios', usuarioController.listarUsuarios);
 
