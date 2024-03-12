@@ -17,7 +17,7 @@ export class CulturaController {
       return res.status(201).json(novaCultura);
     } catch (error) {
       console.error("Erro ao criar cultura:", error);
-      return res.status(500).json({ error: "Erro interno do servidor" });
+      return res.status(500).json({ error: "Erro interno do servidor: \n"+error });
     }
   }
 
@@ -36,7 +36,7 @@ export class CulturaController {
       return res.status(200).json(cultura);
     } catch (error) {
       console.error("Erro ao ler cultura por ID:", error);
-      return res.status(500).json({ error: "Erro interno do servidor" });
+      return res.status(500).json({ error: "Erro interno do servidor: \n"+error });
     }
   }
 
@@ -51,7 +51,7 @@ export class CulturaController {
       return res.status(200).json(culturas);
     } catch (error) {
       console.error("Erro ao listar culturas por usuário:", error);
-      return res.status(500).json({ error: "Erro interno do servidor" });
+      return res.status(500).json({ error: "Erro interno do servidor: \n"+error });
     }
   }
 
@@ -68,7 +68,7 @@ export class CulturaController {
       return res.status(200).json(culturaAtualizada);
     } catch (error) {
       console.error("Erro ao atualizar cultura:", error);
-      return res.status(500).json({ error: "Erro interno do servidor" });
+      return res.status(500).json({ error: "Erro interno do servidor: \n"+error });
     }
   }
 
@@ -83,7 +83,7 @@ export class CulturaController {
       return res.status(204).send();
     } catch (error) {
       console.error("Erro ao excluir cultura:", error);
-      return res.status(500).json({ error: "Erro interno do servidor" });
+      return res.status(500).json({ error: "Erro interno do servidor: \n"+error });
     }
   }
 }
