@@ -1,9 +1,12 @@
 import express from "express";
 import prisma from "./utils/prisma";
 import cron from "node-cron";
+import router from "./routes";
 
 const app = express();
 app.use(express.json());
+
+app.use(router)
 
 const port = process.env.PORT ?? 4000;
 
