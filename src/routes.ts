@@ -9,7 +9,9 @@ const culturaController = new CulturaController();
 const usuarioController = new UsuarioController();
 
 // Rotas para Cultura
-router.post('/cultura/index', culturaController.listarCulturasPorUsuario);
+router.post('/cultura/index_user', culturaController.listarCulturasPorUsuario);
+
+router.post('/cultura/index_unique', culturaController.lerCulturaPorId);
 
 router.post('/culturas', culturaController.criarCultura);
 

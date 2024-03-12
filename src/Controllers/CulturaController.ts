@@ -43,7 +43,7 @@ export class CulturaController {
 
   async listarCulturasPorUsuario(req: Request, res: Response) {
     try {
-      const usuarioId = Number(req.params.usuarioId);
+      const {usuarioId} = req.body;
 
       const culturas = await prisma.cultura.findMany({
         where: { usuario_id: usuarioId },
