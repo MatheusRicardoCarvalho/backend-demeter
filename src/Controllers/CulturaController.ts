@@ -24,7 +24,7 @@ export class CulturaController {
 
   async lerCulturaPorId(req: Request, res: Response) {
     try {
-      const culturaId = Number(req.params.culturaId);
+      const {culturaId} = req.body;
 
       const cultura = await prisma.cultura.findUnique({
         where: { id: culturaId },
