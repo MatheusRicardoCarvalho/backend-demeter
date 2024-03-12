@@ -22,4 +22,6 @@ router.get('/usuarios', usuarioController.listarUsuarios);
 
 router.post('/usuarios', usuarioController.criarUsuario);
 
+router.put('/culturas', culturaController.atualizarCultura)
+
 export default router;
