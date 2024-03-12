@@ -24,6 +24,7 @@ model Cultura {
   id   Int     @id @default(autoincrement())
   nome String
   kc   Float
+  mm_dia Float @default(6.1)
   usuario_id Int
   usuario    Usuario @relation(fields: [usuario_id], references: [id])
 }

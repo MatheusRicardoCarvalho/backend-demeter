@@ -4,12 +4,13 @@ import prisma from "../utils/prisma";
 export class CulturaController {
   async criarCultura(req: Request, res: Response) {
     try {
-      const { nome, kc, usuarioId } = req.body;
+      const { nome, kc, usuarioId, mm_dia } = req.body;
 
       const novaCultura = await prisma.cultura.create({
         data: {
           nome,
           kc,
+          mm_dia,
           usuario: { connect: { id: usuarioId } },
         },
       });
