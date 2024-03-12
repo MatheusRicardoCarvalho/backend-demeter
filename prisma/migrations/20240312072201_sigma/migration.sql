@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Cultura" ADD COLUMN     "mm_restante" DOUBLE PRECISION NOT NULL DEFAULT 6.1;

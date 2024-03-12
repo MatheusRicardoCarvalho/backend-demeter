@@ -32,6 +32,8 @@ export class CulturaController {
   
       const culturasFormatadas = culturas.map(cultura => ({
         mm_dia: cultura.mm_dia,
+        mm_restante: cultura.mm_restante,
+        culturaId: cultura.id,
         tel: cultura.usuario?.tel,
         nome_cultura: cultura.nome,
         nome_usuario: cultura.usuario?.nome
@@ -81,12 +83,11 @@ export class CulturaController {
 
   async atualizarCultura(req: Request, res: Response) {
     try {
-      const culturaId = Number(req.params.culturaId);
-      const { nome, kc } = req.body;
+      const { culturaId, mm_restante} = req.body;
 
       const culturaAtualizada = await prisma.cultura.update({
         where: { id: culturaId },
-        data: { nome, kc },
+        data: { mm_restante },
       });
 
       return res.status(200).json(culturaAtualizada);

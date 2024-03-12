@@ -25,6 +25,7 @@ model Cultura {
   nome String
   kc   Float
   mm_dia Float @default(6.1)
+  mm_restante Float @default(6.1)
   usuario_id Int
   usuario    Usuario @relation(fields: [usuario_id], references: [id])
 }
