@@ -1,19 +1,20 @@
 import express from "express";
 import prisma from "./utils/prisma";
-import cron from "node-cron";
 import router from "./routes";
 
 const app = express();
 app.use(express.json());
 
+app.use((req, res, next) => {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
+    return res.redirect(308, `https://${req.headers.host}${req.url}`);
+  }
+  return next();
+});
+
 app.use(router)
 
 const port = process.env.PORT ?? 4000;
-
-cron.schedule("0 5 * * *", () => {
-  
-});
-
 
 
 app.get("/sensores", async (request, response) => {
