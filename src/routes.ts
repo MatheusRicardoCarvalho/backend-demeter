@@ -25,6 +25,8 @@ router.post('/usuarios', usuarioController.criarUsuario);
 
 router.put('/culturas', culturaController.atualizarCultura)
 
+router.put('/usuario/:usuarioId', usuarioController.atualizarUsuario)
+
 router.post('/usuario/:usuarioId/culturas', usuarioController.listarCulturasPorUsuario);
 
 export default router;
