@@ -78,4 +78,20 @@ export class UsuarioController {
       return res.status(500).json({ error: "Erro interno do servidor: \n"+error });
     }
   }
+
+  async listarCulturasPorUsuario(req: Request, res: Response) {
+    try {
+      const usuarioId = Number(req.params.usuarioId);
+  
+      const culturas = await prisma.cultura.findMany({
+        where: { usuario_id: usuarioId },
+      });
+  
+      return res.status(200).json(culturas);
+    } catch (error) {
+      console.error("Erro ao listar culturas por usuário:", error);
+      return res.status(500).json({ error: "Erro interno do servidor: \n"+error });
+    }
+  }
+  
 }
