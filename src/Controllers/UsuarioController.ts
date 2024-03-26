@@ -50,19 +50,32 @@ export class UsuarioController {
   async atualizarUsuario(req: Request, res: Response) {
     try {
       const usuarioId = Number(req.params.usuarioId);
-      const { nome } = req.body;
-
+      const { nome, tel } = req.body;
+  
+      const dataToUpdate: any = {};
+      if (nome !== undefined) {
+        dataToUpdate.nome = nome;
+      }
+      if (tel !== undefined) {
+        dataToUpdate.tel = tel;
+      }
+  
+      if (Object.keys(dataToUpdate).length === 0) {
+        return res.status(400).json({ error: "Nenhum campo para atualização fornecido" });
+      }
+  
       const usuarioAtualizado = await prisma.usuario.update({
         where: { id: usuarioId },
-        data: { nome },
+        data: dataToUpdate,
       });
-
+  
       return res.status(200).json(usuarioAtualizado);
     } catch (error) {
       console.error("Erro ao atualizar usuário:", error);
-      return res.status(500).json({ error: "Erro interno do servidor: \n"+error });
+      return res.status(500).json({ error: "Erro interno do servidor: \n" + error });
     }
   }
+  
 
   async excluirUsuario(req: Request, res: Response) {
     try {
