@@ -29,4 +29,8 @@ router.put('/usuario/:usuarioId', usuarioController.atualizarUsuario)
 
 router.post('/usuario/:usuarioId/culturas', usuarioController.listarCulturasPorUsuario);
 
+router.delete('/usuario/:usuarioId', usuarioController.excluirUsuario)
+
+router.delete('/cultura/:culturaId', culturaController.excluirCultura)
+
 export default router;
